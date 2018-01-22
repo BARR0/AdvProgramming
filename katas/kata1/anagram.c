@@ -4,9 +4,9 @@
 void put(int keys[], int vals[], int size, int key, int val)
 {
     int i;
-    for(i = key % size; vals[i] != -1; i = (i + 1) % size)
+    for (i = key % size; vals[i] != -1; i = (i + 1) % size)
     {
-        if(keys[i] == key)
+        if (keys[i] == key)
         {
             vals[i] = val;
             return;
@@ -28,14 +28,14 @@ int get(int keys[], int vals[], int size, int key)
     return -1;
 }
 
-
-
 /**
  * Return an array of size *returnSize.
  * Note: The returned array must be malloced, assume caller calls free().
  */
-int *anagramMappings(int* A, int ASize, int* B, int BSize, int* returnSize) {
-    if(ASize != BSize){
+int *anagramMappings(int *A, int ASize, int *B, int BSize, int *returnSize)
+{
+    if (ASize != BSize)
+    {
         printf("WHAT?!?!!???");
         return NULL;
     }
@@ -43,15 +43,15 @@ int *anagramMappings(int* A, int ASize, int* B, int BSize, int* returnSize) {
     int m = ASize * 2;
     int keys[m];
     int vals[m];
-    for(int i = 0; i < m; ++i)
+    for (int i = 0; i < m; ++i)
     {
         vals[i] = -1;
     }
-    for(int i = 0; i < BSize; ++i)
+    for (int i = 0; i < BSize; ++i)
     {
         put(keys, vals, m, B[i], i);
     }
-    for(int i = 0; i < ASize; ++i)
+    for (int i = 0; i < ASize; ++i)
     {
         AB[i] = get(keys, vals, m, A[i]);
     }
@@ -59,7 +59,8 @@ int *anagramMappings(int* A, int ASize, int* B, int BSize, int* returnSize) {
     return AB;
 }
 
-int main(){
+int main()
+{
     int A[] = {0, 1, 2, 3, 4};
     int B[] = {4, 3, 2, 1, 0};
     int r;
