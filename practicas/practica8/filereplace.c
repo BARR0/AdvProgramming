@@ -41,7 +41,17 @@ int main()
                 character = fgetc(input);
                 fputc(character, stdin);
             }
-            fputc('\n', stdout);
+            // fputc('\n', stdout);
+            fputs(replace, stdout);
+            while(1)
+            {
+                character = fgetc(input);
+                if (feof(input))
+                {
+                    break;
+                }
+                fputc(character, stdout);
+            }
             break;
         }
     }
