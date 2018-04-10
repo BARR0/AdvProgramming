@@ -12,11 +12,11 @@ typedef struct
 
 int main(int argc, char **argv)
 {
-    char *dbName = "student.dat";
-    Student myStudent;
     if (argc < 2) return 1;
-    char *searchName = argv[1];
-    FILE *data = fopen(dbName, "rb");
+    char *search = argv[1];
+    char *dbName = "student.dat";
+    FILE *data = fopen(dbName, "r+b");
+    Student myStudent;
     while(1)
     {
         fread(&myStudent, sizeof(Student), 1, data);
@@ -24,13 +24,11 @@ int main(int argc, char **argv)
         {
             break;
         }
-        if(!strcmp(myStudent.firstName, searchName))
+        if(!strcmp(myStudent.firstName, search))
         {
-            printf("Student info: \n");
-            printf("firstname: %s\n", myStudent.firstName);
-            printf("lastname: %s\n", myStudent.lastName);
-            printf("id: %d\n", myStudent.id);
-            printf("semester: %s\n", myStudent.semester);
+            myStudent.free = 1;
+            fseek(data, -1 * sizeof(Student), SEEK_CUR);
+            fwrite(&myStudent, sizeof(Student), 1, data);
             break;
         }
     }

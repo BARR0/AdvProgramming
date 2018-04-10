@@ -6,6 +6,7 @@ typedef struct
     char lastName[20];
     short id;
     char semester[3];
+    char free;
 } Student;
 
 int main()
@@ -18,6 +19,7 @@ int main()
         sprintf(pAvanzada[i].lastName, "lasname%i", i);
         pAvanzada[i].id = i;
         sprintf(pAvanzada[i].semester, "S%i", i);
+        pAvanzada[i].free = 0;
     }
     FILE *data = fopen(dbName, "wb");
     fwrite(pAvanzada, sizeof(Student), 10, data);
