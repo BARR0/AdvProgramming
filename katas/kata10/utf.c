@@ -29,7 +29,8 @@ int checkChar(int *data, int dataSize)
     return size;
 }
 
-bool validUtf8(int* data, int dataSize) {
+bool validUtf8(int *data, int dataSize)
+{
     int size;
     for (int i = 0; i < dataSize; i += size)
     {
